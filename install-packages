@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -x
+
+#rm -rf /usr/pkg /var/db/pkg /public/packages/
+mv /usr/pkg /usr/pkg.old
+mv /var/db/pkg /var/db/pkg.old
+
+for w in \
+	x11/modular-xorg-server \
+	meta-pkgs/modular-xorg-drivers \
+	meta-pkgs/modular-xorg-fonts \
+	meta-pkgs/modular-xorg \
+	fonts/dejavu-ttf \
+	www/firefox \
+	editors/vim-gtk2 \
+        pkgtools/createbuildlink \
+        pkgtools/pkgdiff \
+        pkgtools/pkglint \
+        pkgtools/url2pkg \
+        wm/dwm \
+        print/evince3 \
+        wip/pangoterm \
+        x11/rxvt-unicode \
+        devel/git \
+	wip/clang-git \
+	wip/gnome-core \
+	wip/epiphany \
+	# end of list
+do
+make -C /usr/pkgsrc/$w clean-depends
+make -C /usr/pkgsrc/$w clean
+make -C /usr/pkgsrc/$w install
+make -C /usr/pkgsrc/$w package
+done

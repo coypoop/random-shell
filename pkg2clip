@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+# Put .include "../../category/pkgname/buildlink3.mk" to clipboard
+# Given input pkgname
+# Requires x11/xclip.
+
+locate "${1}" \
+ | awk -F '/' '/buildlink3.mk/{print "../../"$(NF-2)"/"$(NF-1)"/"$(NF);exit}' \
+ | sed -e 's/\(.*\)/.include "\1"/g' \
+ | xclip -sel clip

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# thunk out cmd - lazily evaluate cmd
+# if out doesn't exist, run cmd > out
+
+out="$1"
+shift
+
+if [ ! -e "$out" ]; then
+	"$@" > "$out"
+fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rm -rf /usr/pkg /var/db/pkg
+mv /usr/pkg.old /usr/pkg
+mv /var/db/pkg.old /var/db/pkg
+
