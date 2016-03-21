@@ -6,6 +6,9 @@ set -x
 mv /usr/pkg /usr/pkg.old
 mv /var/db/pkg /var/db/pkg.old
 
+# delete old work directories
+find /usr/pkgsrc -name work -exec rm -r {} +
+
 for w in \
 	x11/modular-xorg-server \
 	meta-pkgs/modular-xorg-drivers \
@@ -28,8 +31,6 @@ for w in \
 	wip/epiphany \
 	# end of list
 do
-make -C /usr/pkgsrc/$w clean-depends
-make -C /usr/pkgsrc/$w clean
 make -C /usr/pkgsrc/$w install
 make -C /usr/pkgsrc/$w package
 done
