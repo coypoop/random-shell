@@ -10,25 +10,15 @@ mv /var/db/pkg /var/db/pkg.old
 find /usr/pkgsrc -name work -exec rm -r {} +
 
 for w in \
-	x11/modular-xorg-server \
-	meta-pkgs/modular-xorg-drivers \
-	meta-pkgs/modular-xorg-fonts \
-	meta-pkgs/modular-xorg \
 	fonts/dejavu-ttf \
 	www/firefox \
 	editors/vim-gtk2 \
+        wm/dwm \
+        wip/pangoterm \
         pkgtools/createbuildlink \
         pkgtools/pkgdiff \
         pkgtools/pkglint \
         pkgtools/url2pkg \
-        wm/dwm \
-        print/evince3 \
-        wip/pangoterm \
-        x11/rxvt-unicode \
-        devel/git \
-	wip/clang-git \
-	wip/gnome-core \
-	wip/epiphany \
 	# end of list
 do
 make -C /usr/pkgsrc/$w install
