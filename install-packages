@@ -7,7 +7,7 @@ mv /usr/pkg /usr/pkg.old
 mv /var/db/pkg /var/db/pkg.old
 
 # delete old work directories
-find /usr/pkgsrc -name work -exec rm -r {} +
+find /usr/pkgsrc -mindepth 3 -maxdepth 3 -name work -exec rm -r {} +
 
 for w in \
 	fonts/dejavu-ttf \
